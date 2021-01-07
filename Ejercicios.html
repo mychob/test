@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!------------- EJERCICIO 1 ------------->
+<h3>1. Introduce una cadena:</h3>
+
+  <form id="frm1" action="/action_page.php">
+    Cadena: <input type="text" name="word"><br><br>
+  </form>
+  <button onclick="ejercicio1()">Introducir</button>
+  <p id="resultado1"></p>
+
+  <script>
+  function ejercicio1(){
+    var word = document.getElementById("frm1").elements[0].value;
+    if(palindromo(word)){
+      document.getElementById("resultado1").innerHTML = word + " es un palíndromo.";
+    }else{
+      document.getElementById("resultado1").innerHTML = word + " no es un palíndromo.";
+    }
+  }
+
+  function palindromo(word){
+    var len = word.length;
+    var word = word.toLowerCase();
+    for (let i=0;i<=len/2;i++){
+      if(word.charAt(i)!=word.charAt(len-1-i)){  return false;  }
+    }
+    return true;
+  }
+
+  </script>
+
+<!------------- EJERCICIO 2 ------------->
+<h3>2. Introduce dos numeros:</h3>
+
+<form id="frm2" action="/action_page.php">
+  Primer Numero: <input type="text" name="x"><br>
+  Segundo Numero: <input type="text" name="y"><br><br>
+</form>
+<button onclick="biggerThan()">Calcular</button>
+<p id="resultado2"></p>
+
+<script>
+function biggerThan() {
+  var n = document.getElementById("frm2");
+  var x = n.elements[0].value;
+  var y = n.elements[1].value;
+  if(x>y){
+    document.getElementById("resultado2").innerHTML = "El número "+ x + " es mayor que " + y;
+  }else{
+    document.getElementById("resultado2").innerHTML = "El número "+ y + " es mayor que " + x;
+  }
+
+}
+</script>
+
+
+<!------------- EJERCICIO 3 ------------->
+
+<h3>3. Vocales en la frase</h3>
+
+  <form id="frm3" action="/action_page.php">
+    Escribe una frase: <input type="text" name="name"><br><br>
+  </form>
+  <button onclick="vocales()">Introducir</button>
+  <p id="resultado3"></p>
+
+  <script>
+  function vocales(){
+    var input = document.getElementById("frm3").elements[0].value;
+    var result = ""
+    if (input.includes("a")){
+      result += " a"
+    }
+    if (input.includes("e")){
+      result += " e"
+    }
+    if (input.includes("i")){
+      result += " i"
+    }
+    if (input.includes("o")){
+      result += " o"
+    }
+    if (input.includes("u")){
+      result += " u"
+    }
+    document.getElementById("resultado3").innerHTML = "La frase contiene las vocales:" + result
+  }
+  </script>
+
+<!------------- EJERCICIO 4 ------------->
+  <h3>3. Veces repetidas</h3>
+
+    <form id="frm4" action="/action_page.php">
+      Escribe una frase: <input type="text" name="name"><br><br>
+    </form>
+    <button onclick="vocalesRep()">Introducir</button>
+    <p id="resultado4"></p>
+
+    <script>
+    function vocalesRep(){
+      var input = document.getElementById("frm4").elements[0].value;
+      var result = [0,0,0,0,0];
+      var character;
+      for (let i=0; i<input.length; i++){
+        character = input.charAt(i);
+        switch(character){
+          case "a":
+            result[0]+=1
+            break;
+          case "e":
+            result[1]+=1
+            break;
+          case "i":
+            result[2]+=1
+            break;
+          case "o":
+            result[3]+=1
+            break;
+          case "u":
+            result[4]+=1
+            break;
+        }
+      }
+
+      document.getElementById("resultado4").innerHTML = "La vocal 'a' se repite: " + result[0] + " veces<br>" + "La vocal 'e' se repite: " + result[1] + " veces<br>" + "La vocal 'i' se repite: " + result[2] + " veces<br>" + "La vocal 'o' se repite: " + result[3] + " veces<br>" + "La vocal 'u' se repite: " + result[4] + " veces<br>"
+    }
+    </script>
+
+
+
+
+<!------------- template -----------
+  <h3>Ejercicio</h3>
+
+    <form id="frm" action="/action_page.php">
+      Texto: <input type="text" name="name"><br><br>
+    </form>
+    <button onclick="function()">Introducir</button>
+    <p id="resultado"></p>
+
+    <script>
+    var word = document.getElementById("frm1").elements[0].value;
+    </script>
+-->
+</body>
+</html>
