@@ -34,7 +34,7 @@
   <script>
     var input = document.getElementById("recurso");
     input.value = location.href;
-    document.getElementById("estados").innerHTML = "0. No inicializada.";
+    document.getElementById("estados").innerHTML = "0. Request not initialized.";
 
     function loadDoc() {
       var url = document.getElementById("recurso").value;
@@ -42,7 +42,19 @@
 
       xhttp.onreadystatechange = function() {
 
-        document.getElementById("estados").innerHTML = this.readyState;
+        switch (this.readyState) {
+          case 0: document.getElementById("estados").innerHTML = this.readyState + ". Request not initialized.";
+            break;
+          case 1: document.getElementById("estados").innerHTML = this.readyState + ". Server connection established.";
+            break;
+          case 2: document.getElementById("estados").innerHTML = this.readyState + ". Request received.";
+            break;
+          case 3: document.getElementById("estados").innerHTML = this.readyState + ". Processing request.";
+            break;
+          case 4: document.getElementById("estados").innerHTML = this.readyState + ". Request finished and response is ready.";
+            break;
+          default: document.getElementById("estados").innerHTML = "0. Request not initialized.";
+        }
 
         document.getElementById("codigo").innerHTML = this.status + " '" + this.statusText + "'.";
 
@@ -51,7 +63,8 @@
         if (this.readyState == 4 && this.status == 200) {
           document.getElementById("contenidos").innerHTML = this.responseText;
         }
-      };var input = document.getElementById("recurso");
+      }
+
       xhttp.open("GET", url, true);
       xhttp.send();
     }
