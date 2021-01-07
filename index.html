@@ -37,7 +37,7 @@
     document.getElementById("estados").innerHTML = "0. No inicializada.";
 
     function loadDoc() {
-      input = document.getElementById("recurso");
+      var url = document.getElementById("recurso").value;
       var xhttp = new XMLHttpRequest();
 
       xhttp.onreadystatechange = function() {
@@ -51,8 +51,8 @@
         if (this.readyState == 4 && this.status == 200) {
           document.getElementById("contenidos").innerHTML = this.responseText;
         }
-      };
-      xhttp.open("GET", input.value, true);
+      };var input = document.getElementById("recurso");
+      xhttp.open("GET", url, true);
       xhttp.send();
     }
   </script>
