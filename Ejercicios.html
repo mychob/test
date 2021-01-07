@@ -35,17 +35,16 @@
 <h3>2. Introduce dos numeros:</h3>
 
 <form id="frm2" action="/action_page.php">
-  Primer Numero: <input type="text" name="x"><br>
-  Segundo Numero: <input type="text" name="y"><br><br>
+  Primer Numero: <input type="text" id="x"><br>
+  Segundo Numero: <input type="text" id="y"><br><br>
 </form>
 <button onclick="biggerThan()">Calcular</button>
 <p id="resultado2"></p>
 
 <script>
 function biggerThan() {
-  var n = document.getElementById("frm2");
-  var x = n.elements[0].value;
-  var y = n.elements[1].value;
+  var x = Number(document.getElementById("x").value);
+  var y = Number(document.getElementById("y").value);
   if(x>y){
     document.getElementById("resultado2").innerHTML = "El número "+ x + " es mayor que " + y;
   }else{
